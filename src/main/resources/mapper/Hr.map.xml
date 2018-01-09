@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.pingweb.model.Hr">
+	<resultMap id="Hr" type="cn.pingweb.model.Hr">
+    	<id property="openid" column="id" jdbcType="VARCHAR" />
+		<result property="name" column="name" jdbcType="VARCHAR" />		
+		<result property="birthday" column="birthday" jdbcType="VARCHAR" />	
+		<result property="company" column="company" jdbcType="VARCHAR" />
+		<result property="job" column="job" jdbcType="VARCHAR" />	
+		<result property="telephone" column="telephone" jdbcType="VARCHAR" />	
+		<result property="email" column="email" jdbcType="VARCHAR" />
+		<result property="avatarUrl" column="avatarUrl" jdbcType="VARCHAR" />	
+		<result property="sex" column="sex" jdbcType="VARCHAR" />
+		<result property="city" column="city" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="TableName">
+		hr
+	</sql>
+	
+	<select id="selectFromOpenid" resultMap="Hr">
+		select * from <include refid="TableName" />
+		where id = #{openid}
+	</select>
+	
+	<insert id="newHr" parameterType="cn.pingweb.model.Hr">
+		insert into <include refid="TableName" />
+		(id) values(#{openid})
+	</insert>
+	
+	<update id='updateHr' parameterType="cn.pingweb.model.Hr">
+		update <include refid="TableName"/> set
+			name=#{name},
+			birthday=#{birthday},
+			sex=#{sex},
+			telephone=#{telephone},
+			email=#{email},
+			avatarUrl=#{avatarUrl},
+			city=#{city},
+			company=#{company},
+			job=#{job}
+		where
+			id=#{openid}
+			
+	</update>
+	
+	<update id='updateAvatar' parameterType="cn.pingweb.model.Hr">
+		update <include refid="TableName"/> set
+			avatarUrl=#{avatarUrl}
+		where
+			id=#{openid}
+	</update>
+	
+</mapper>
+
+<!-- parameterType:使用的参数类型
+id:方法名
+resultMap和resultType不能一起用 -->

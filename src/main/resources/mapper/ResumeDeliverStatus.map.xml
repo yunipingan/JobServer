@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.pingweb.model.ResumeDeliverStatus">
+	<resultMap id="ResumeDeliverStatus" type="cn.pingweb.model.ResumeDeliverStatus">
+    	<id property="id" column="rds_id" jdbcType="BIGINT" />
+		<result property="job_id" column="job_id" jdbcType="BIGINT" />	
+		<result property="resume_id" column="resume_id" jdbcType="BIGINT" />		
+		<result property="seeker_id" column="seeker_id" jdbcType="VARCHAR" />		
+		<result property="deliver_date_time" column="deliver_date_time" jdbcType="VARCHAR" />		
+		<result property="read_date_time" column="read_date_time" jdbcType="VARCHAR" />	
+		<result property='reject_date_time' column='reject_date_time' jdbcType='VARCHAR' />
+		<result property="interview_date_time" column="interview_date_time" jdbcType="VARCHAR" />	
+		<result property="status" column="status" jdbcType="VARCHAR" />	
+		<result property="seeker_read" column="seeker_read" jdbcType="BOOLEAN" />
+		<result property="hr_read" column="hr_read" jdbcType="BOOLEAN" />
+		<association property="job" javaType="cn.pingweb.model.Job" resultMap='Job'></association>
+		<association property="seeker" javaType="cn.pingweb.model.Seeker" resultMap='Seeker'></association>
+	</resultMap>
+	<resultMap id='Job' type="cn.pingweb.model.Job">
+		<id property="id" column="j_id" jdbcType="BIGINT" />
+		<result property="name" column="j_name" jdbcType="VARCHAR" />		
+		<result property="salary_upper" column="salary_upper" jdbcType="INTEGER" />
+		<result property="salary_lower" column="salary_lower" jdbcType="INTEGER" />
+		<result property="city" column="j_city" jdbcType="VARCHAR" />
+		<result property="company_id" column="company_id" jdbcType="BIGINT" />
+		<association property="company" javaType="cn.pingweb.model.Company" resultMap='Company'>
+	   	</association>
+	</resultMap>
+	<resultMap id='Company' type="cn.pingweb.model.Company">
+		<id property="id" column="c_id" jdbcType="BIGINT" />
+	    <result property="name" column="c_name" jdbcType="VARCHAR" />
+	    <result property="logo" column="logo" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id='Seeker' type='cn.pingweb.model.Seeker'>
+		<id property="openid" column="id" jdbcType="VARCHAR" />
+		<result property="name" column="name" jdbcType="VARCHAR" />
+		<result property="email" column="email" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="TableName">
+		resume_deliver_status
+	</sql>
+	
+	<select id="getUnReadLength" resultType='int'>
+		select count(*) from <include refid="TableName" />
+		where seeker_read=false and seeker_id=#{seeker_id}
+	</select>
+	
+	<select id='getUnRead' resultMap='ResumeDeliverStatus'>
+		select resume_deliver_status.*,job.*,company.* from <include refid="TableName" />, job,company
+		where seeker_read=false and seeker_id=#{seeker_id} and resume_deliver_status.job_id=job.j_id and company.c_id=job.company_id
+	</select>
+	
+	<select id='getDeliverRecodeById' resultMap='ResumeDeliverStatus'>
+		select resume_deliver_status.*,job.*,company.* from <include refid='TableName' />,job,company
+		where resume_deliver_status.rds_id=#{id} and resume_deliver_status.job_id=job.j_id and company.c_id=job.company_id
+	</select>
+	
+	<update id='setRead'>
+		update <include refid='TableName' /> set
+		seeker_read=true 
+		where rds_id=#{id}
+	</update>
+	
+	<insert id='deliver' parameterType='cn.pingweb.model.ResumeDeliverStatus'>
+		insert into <include refid='TableName' />
+		(seeker_id,job_id,resume_id,deliver_date_time)
+		values
+		(#{seeker_id},#{job_id},#{resume_id},#{deliver_date_time})
+	</insert>
+	
+	<select id='hadDelivered' resultType='int'>
+		select count(*) from <include refid='TableName' />
+		where job_id=#{job_id} and seeker_id=#{seeker_id}
+	</select>
+	
+	<!-- 以下为测试用 -->
+	<select  id="getAll" resultMap='ResumeDeliverStatus'>
+		select resume_deliver_status.*,job.*,seeker.name,seeker.email from <include refid='TableName' />,job,seeker
+		where resume_deliver_status.job_id=job.j_id and resume_deliver_status.seeker_id=seeker.id order by resume_deliver_status.rds_id desc
+	</select>
+	
+	<update id='setResumeStatusRead'>
+		update resume_deliver_status set
+		status='待沟通',
+		seeker_read=false,
+		read_date_time=#{read_date_time}
+		where resume_deliver_status.rds_id=#{id}
+	</update>
+	
+	<update id='invicate'>
+		update resume_deliver_status set
+		status='面试',
+		interview_date_time=#{interview_date_time},
+		seeker_read=false
+		where resume_deliver_status.rds_id=#{id}
+	</update>
+	
+	<update id='reject'>
+		update resume_deliver_status set
+		status='不合适',
+		reject_date_time=#{reject_date_time},
+		seeker_read=false
+		where resume_deliver_status.rds_id=#{id}
+	</update>
+</mapper>
+
+<!-- parameterType:使用的参数类型
+id:方法名
+resultMap和resultType不能一起用 -->

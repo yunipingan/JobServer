@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.pingweb.model.Company">
+	<resultMap id="Company" type="cn.pingweb.model.Company">
+    	<id property="id" column="c_id" jdbcType="BIGINT" />
+    	<result property="name" column="c_name" jdbcType="VARCHAR" />
+	    <result property="scale" column="scale" jdbcType="VARCHAR" />
+	    <result property="financing_stage" column="financing_stage" jdbcType="VARCHAR" />
+	    <result property="address" column="address" jdbcType="VARCHAR" />
+	    <result property="province" column="province" jdbcType="VARCHAR" />
+	    <result property="description" column="description" jdbcType="VARCHAR" />    
+	    <result property="city" column="c_city" jdbcType="VARCHAR" />
+	    <result property="district" column="c_district" jdbcType="VARCHAR" />
+	    <result property="field" column="field" jdbcType="VARCHAR" /> 
+	    <result property="logo" column="logo" jdbcType="VARCHAR" />
+	    <result property="poster" column="poster" jdbcType="VARCHAR" />    
+	    <result property="longitude" column="longitude" jdbcType="VARCHAR" />
+	    <result property="latitude" column="latitude" jdbcType="VARCHAR" />
+	    <result property="c_name_short" column="c_name_short" jdbcType="VARCHAR" />   	
+	</resultMap>
+
+	<sql id="TableName">
+		company
+	</sql>
+	
+	<select id="selectFromOpenid" resultMap="Company">
+		select * from <include refid="TableName" />
+		where id = #{id}
+	</select>
+	
+	<insert id="newCompany" parameterType="cn.pingweb.model.Company">
+		insert into <include refid="TableName" />
+		(id) values(#{id})
+	</insert>
+	
+	<update id='updateHr' parameterType="cn.pingweb.model.Company">
+		update <include refid="TableName"/> set
+			name=#{name},
+			scale=#{scale},
+			sex=#{sex},
+			telephone=#{telephone},
+			email=#{email},
+			avatarUrl=#{avatarUrl},
+			city=#{city},
+			company=#{company},
+			job=#{job}
+		where
+			id=#{id}
+			
+	</update>
+	
+</mapper>
+
+<!-- parameterType:使用的参数类型
+id:方法名
+resultMap和resultType不能一起用 -->

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.pingweb.model.Collection">
+	<resultMap id="Collection" type="cn.pingweb.model.Collection">
+    	<id property="id" column="id" jdbcType="BIGINT" />
+		<result property="seeker_id" column="seeker_id" jdbcType="VARCHAR" />		
+		<result property="job_id" column="job_id" jdbcType="BIGINT" />
+		<association property="job" javaType="cn.pingweb.model.Job">
+        	<id property="id" column="j_id" jdbcType="BIGINT" />
+            <result property="name" column="j_name" jdbcType="VARCHAR" />
+            <result property="salary_upper" column="salary_upper" jdbcType="INTEGER" />
+			<result property="salary_lower" column="salary_lower" jdbcType="INTEGER" />	
+			<result property="status" column="status" jdbcType="BOOLEAN" />	
+            <result property="workplace" column="workplace" jdbcType="VARCHAR" />
+            <result property="city" column="j_city" jdbcType="VARCHAR" />
+            <result property="district" column="j_district" jdbcType="VARCHAR" />
+            <result property="degree_limit" column="degree_limit" jdbcType="VARCHAR" />
+            <result property="welfare" column="welfare" jdbcType="VARCHAR" />     
+            <result property="company_id" column="company_id" jdbcType="VARCHAR" />
+            <result property="hr_id" column="hr_id" jdbcType="VARCHAR" />   
+            <result property="release_date" column="release_date" jdbcType="VARCHAR" />
+            <result property="type" column="type" jdbcType="VARCHAR" />	    
+	        <association property="company" javaType="cn.pingweb.model.Company">
+	        	<id property="id" column="c_id" jdbcType="BIGINT" />
+	            <result property="name" column="c_name" jdbcType="VARCHAR" />
+	            <result property="scale" column="scale" jdbcType="VARCHAR" />
+	            <result property="financing_stage" column="financing_stage" jdbcType="VARCHAR" />
+	            <result property="address" column="address" jdbcType="VARCHAR" />
+	            <result property="province" column="province" jdbcType="VARCHAR" />
+	            <result property="city" column="c_city" jdbcType="VARCHAR" />     
+	            <result property="description" column="description" jdbcType="VARCHAR" />  
+	            <result property="district" column="c_district" jdbcType="VARCHAR" />      
+	            <result property="field" column="field" jdbcType="VARCHAR" />
+	            <result property="logo" column="logo" jdbcType="VARCHAR" />
+	    		<result property="poster" column="poster" jdbcType="VARCHAR" />    
+	    		<result property="longitude" column="longitude" jdbcType="VARCHAR" />
+	    		<result property="latitude" column="latitude" jdbcType="VARCHAR" />
+	    		<result property="c_name_short" column="c_name_short" jdbcType="VARCHAR" />    
+	        </association>	    
+        </association>		
+	</resultMap>
+
+	<sql id="TableName">
+		collection
+	</sql>
+	
+	<insert id="addCollection" parameterType='cn.pingweb.model.Collection'>
+		insert into <include refid='TableName' />
+			(seeker_id,job_id)
+		values
+			(#{seeker_id},#{job_id})
+	</insert>
+	
+	<delete id='deleteCollection' parameterType='cn.pingweb.model.Collection'>
+		delete from <include refid='TableName' />
+		where id=#{id}
+	</delete>
+	
+	<select id='getCollections' resultMap='Collection'>
+		select collection.*,job.*,company.* from collection,job,company
+		where collection.job_id=job.j_id and collection.seeker_id=#{seeker_id} and job.company_id=company.c_id
+	</select>
+	
+	<select id='getCollectionLength' resultType='java.lang.Integer'>
+		select count(*) from collection
+		where seeker_id=#{seeker_id}
+	</select>
+	
+	<select id='isStar' resultType='java.lang.Integer'>
+		select count(*) from collection
+		where seeker_id=#{seeker_id} and job_id=#{job_id}
+	</select>
+	
+	<delete id='unStar' parameterType='cn.pingweb.model.Collection'>
+		delete from collection
+		where seeker_id=#{seeker_id} and job_id=#{job_id}
+	</delete>
+</mapper>
+
+<!-- parameterType:使用的参数类型
+id:方法名
+resultMap和resultType不能一起用 -->
