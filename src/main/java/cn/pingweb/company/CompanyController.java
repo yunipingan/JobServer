@@ -1,5 +1,6 @@
-package cn.pingweb.controller;
+package cn.pingweb.company;
 
+import cn.pingweb.controller.LoginController;
 import cn.pingweb.model.*;
 import cn.pingweb.service.*;
 import net.sf.json.JSONObject;

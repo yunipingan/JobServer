@@ -1,5 +1,6 @@
-package cn.pingweb.controller;
+package cn.pingweb.company;
 
+import cn.pingweb.controller.LoginController;
 import cn.pingweb.model.*;
 import cn.pingweb.service.*;
 import net.sf.json.JSONObject;
@@ -16,9 +17,7 @@ import java.util.List;
 @RequestMapping("resume")
 public class ProjectController {
 	@Resource
-	private ProjectService ps;	
-	@Resource
-	private LoginController lc;
+	private ProjectService ps;
 	
 	@ResponseBody
 	@RequestMapping("/getProjects")

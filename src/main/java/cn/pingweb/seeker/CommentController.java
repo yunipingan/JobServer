@@ -1,4 +1,4 @@
-package cn.pingweb.controller;
+package cn.pingweb.seeker;
 
 import cn.pingweb.model.Comment;
 import cn.pingweb.service.CommentService;

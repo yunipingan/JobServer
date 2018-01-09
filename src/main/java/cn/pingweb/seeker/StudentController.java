@@ -1,4 +1,4 @@
-package cn.pingweb.controller;
+package cn.pingweb.seeker;
 
 import cn.pingweb.model.Student;
 import cn.pingweb.service.StudentService;

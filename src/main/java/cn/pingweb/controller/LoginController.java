@@ -19,8 +19,9 @@ public class LoginController {
 	private SeekerService ss;
 	@Resource
 	private HrService hs;
-	
-	@RequestMapping(value = {"" , "/"})
+
+	@ResponseBody
+	@RequestMapping("/")
 	public String index(){
 		return "user";
 	}

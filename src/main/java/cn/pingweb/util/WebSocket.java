@@ -11,13 +11,13 @@ import java.util.Map;
 @ServerEndpoint(value = "/ws")
 public class WebSocket {
 
-    private static Map<String,Session> sessions=new HashMap<String,Session>();
-    private static Map<Session,String> keys=new HashMap<Session,String>();
+    private static Map<String,Session> sessions = new HashMap<String,Session>();
+    private static Map<Session,String> keys = new HashMap<Session,String>();
 
 	@OnOpen
     public void onOpen(Session session) throws IOException, JSONException {
     //    String id=java.net.URLDecoder.decode(session.getQueryString(),"utf-8");
-		String key=session.getRequestParameterMap().get("openid").get(0);
+		String key = session.getRequestParameterMap().get("openid").get(0);
         WebSocket.sessions.put(key, session); //openid为key session为value
         WebSocket.keys.put(session, key);
         System.out.println("有新连接加入！:"+key);

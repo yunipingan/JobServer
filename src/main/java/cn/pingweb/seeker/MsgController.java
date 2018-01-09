@@ -1,5 +1,6 @@
-package cn.pingweb.controller;
+package cn.pingweb.seeker;
 
+import cn.pingweb.controller.LoginController;
 import cn.pingweb.model.*;
 import cn.pingweb.service.*;
 import org.json.JSONException;
@@ -14,7 +15,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("msg")
-public class msgController {
+public class MsgController {
 	@Resource
 	private ResumeDeliverStatusService rdss;
 	@Resource

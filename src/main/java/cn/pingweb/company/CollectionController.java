@@ -1,4 +1,4 @@
-package cn.pingweb.controller;
+package cn.pingweb.company;
 
 import cn.pingweb.model.*;
 import cn.pingweb.service.*;
@@ -15,9 +15,7 @@ import java.util.List;
 @RequestMapping("collection")
 public class CollectionController {
 	@Resource
-	private CollectionService cs;	
-	@Resource
-	private LoginController lc;
+	private CollectionService cs;
 	
 	@ResponseBody
 	@RequestMapping("/getCollections")

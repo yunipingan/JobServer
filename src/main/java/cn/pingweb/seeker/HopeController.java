@@ -1,4 +1,4 @@
-package cn.pingweb.controller;
+package cn.pingweb.seeker;
 
 import cn.pingweb.model.*;
 import cn.pingweb.service.*;
@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("resume")
 public class HopeController {
 	@Resource
-	private HopeService hs;	
-	@Resource
-	private LoginController lc;
+	private HopeService hs;
 	
 	@ResponseBody
 	@RequestMapping("/getHope")
