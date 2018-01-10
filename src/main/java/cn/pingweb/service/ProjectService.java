@@ -18,15 +18,15 @@ public class ProjectService {
 	}
 	
 	public boolean updateProject(Project e){
-		return pd.updateProject(e);
+		return pd.updateProject(e) == 1 ? true : false;
 	}
 	
 	public boolean deleteProject(Project e){
-		return pd.deleteProject(e);
+		return pd.deleteProject(e) == 1 ? true : false;
 	}
 	
 	public boolean addProject(Project e){
-		return pd.addProject(e);
+		return pd.addProject(e) == 1 ? true : false;
 	}
 	
 	public void deleteProjects(Long resume_id){

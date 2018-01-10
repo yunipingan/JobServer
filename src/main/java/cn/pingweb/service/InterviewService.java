@@ -26,14 +26,14 @@ public class InterviewService {
 	}
 	
 	public boolean setRead(Long id){
-		return rdsd.setRead(id);
+		return rdsd.setRead(id) == 1 ? true : false;
 	}
 	
 	public boolean comment(Long id){
-		return rdsd.comment(id);
+		return rdsd.comment(id) == 1 ? true : false;
 	}
 	
 	public boolean insertNewInterview(Interview i){
-		return rdsd.insertNewInterview(i);
+		return rdsd.insertNewInterview(i) == 1 ? true : false;
 	}
 }

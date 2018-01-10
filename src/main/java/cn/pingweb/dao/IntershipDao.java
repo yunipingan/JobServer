@@ -7,36 +7,15 @@ import java.util.List;
 
 
 @Repository
-public class IntershipDao extends BaseDao<Intership>{
+public interface IntershipDao{
+	
+	public List<Intership> getInterships(Intership i);
+	
+	public int updateIntership(Intership i);
 
-	@Override
-	public Class<Intership> getEntityClass() {
-		// TODO Auto-generated method stub
-		return Intership.class;
-	}
+	public int deleteIntership(Intership i);
+
+	public int addIntership(Intership i);
 	
-	public List<Intership> getInterships(Intership i){
-		String sn=getIbatisMapperNamespace() + ".getInterships";
-		return getSqlSessionTemplate().selectList(sn, i);
-	}
-	
-	public boolean updateIntership(Intership i){
-		String sn=getIbatisMapperNamespace() + ".updateIntership";
-		return getSqlSessionTemplate().update(sn, i)==1?true:false;
-	}
-	
-	public boolean deleteIntership(Intership i){
-		String sn=getIbatisMapperNamespace() + ".deleteIntership";
-		return getSqlSessionTemplate().delete(sn, i)==1?true:false;
-	}
-	
-	public boolean addIntership(Intership i){
-		String sn=getIbatisMapperNamespace() + ".addIntership";
-		return getSqlSessionTemplate().insert(sn, i)==1?true:false;
-	}
-	
-	public void deleteInterships(Long resume_id){
-		String sm=getIbatisMapperNamespace()+".deleteInterships";
-		getSqlSessionTemplate().delete(sm, resume_id);
-	}
+	public int deleteInterships(Long resume_id);
 }

@@ -18,15 +18,15 @@ public class IntershipService {
 	}
 	
 	public boolean updateIntership(Intership i){
-		return id.updateIntership(i);
+		return id.updateIntership(i) == 1 ? true : false;
 	}
 	
 	public boolean deleteIntership(Intership i){
-		return id.deleteIntership(i);
+		return id.deleteIntership(i) == 1 ? true : false;
 	}
 	
 	public boolean addIntership(Intership i){
-		return id.addIntership(i);
+		return id.addIntership(i) == 1 ? true : false;
 	}
 	public void deleteInterships(Long resume_id){
 		id.deleteInterships(resume_id);

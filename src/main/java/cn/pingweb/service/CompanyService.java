@@ -18,14 +18,14 @@ public class CompanyService {
 	}
 	
 	public boolean updateCompany(Company i){
-		return id.updateCompany(i);
+		return id.updateCompany(i) == 1 ? true : false;
 	}
 	
 	public boolean deleteCompany(Company i){
-		return id.deleteCompany(i);
+		return id.deleteCompany(i) == 1 ? true : false;
 	}
 	
 	public boolean addCompany(Company i){
-		return id.addCompany(i);
+		return id.addCompany(i) == 1 ? true : false;
 	}
 }

@@ -24,7 +24,7 @@ public class StudentService {
 		return studentDao.list();
 	}
 	public void edit(Student stu){
-		if(studentDao.selectById(stu)){
+		if(studentDao.selectById(stu).isEmpty()){
 			studentDao.insert(stu);
 		}else{
 			studentDao.update(stu);

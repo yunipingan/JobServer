@@ -26,11 +26,11 @@ public class ResumeDeliverStatusService {
 	}
 	
 	public boolean setRead(Long id){
-		return rdsd.setRead(id);
+		return rdsd.setRead(id) == 1 ? true : false;
 	}
 	
 	public boolean deliver(ResumeDeliverStatus rds){
-		return rdsd.deliver(rds);
+		return rdsd.deliver(rds) == 1 ? true : false;
 	}
 	
 	public boolean hadDelivered(ResumeDeliverStatus rds){
@@ -42,14 +42,14 @@ public class ResumeDeliverStatusService {
 	}
 	
 	public boolean setResumeStatusRead(ResumeDeliverStatus rds){
-		return rdsd.setResumeStatusRead(rds);
+		return rdsd.setResumeStatusRead(rds) == 1 ? true : false;
 	}
 	
 	public boolean invicate(ResumeDeliverStatus rds){
-		return rdsd.invicate(rds);
+		return rdsd.invicate(rds) == 1 ? true : false;
 	}
 	
 	public boolean reject(ResumeDeliverStatus rds){
-		return rdsd.reject(rds);
+		return rdsd.reject(rds) == 1 ? true : false;
 	}
 }

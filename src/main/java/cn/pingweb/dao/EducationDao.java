@@ -7,36 +7,15 @@ import java.util.List;
 
 
 @Repository
-public class EducationDao extends BaseDao<Education>{
+public interface EducationDao{
 
-	@Override
-	public Class<Education> getEntityClass() {
-		// TODO Auto-generated method stub
-		return Education.class;
-	}
+	public List<Education> getEducations(Education e);
 	
-	public List<Education> getEducations(Education e){
-		String sn=getIbatisMapperNamespace() + ".getEducations";
-		return getSqlSessionTemplate().selectList(sn, e);
-	}
+	public int updateEducation(Education e);
+
+	public int deleteEducation(Education e);
 	
-	public boolean updateEducation(Education e){
-		String sn=getIbatisMapperNamespace() + ".updateEducation";
-		return getSqlSessionTemplate().update(sn, e)==1?true:false;
-	}
+	public int addEducation(Education e);
 	
-	public boolean deleteEducation(Education e){
-		String sn=getIbatisMapperNamespace() + ".deleteEducation";
-		return getSqlSessionTemplate().delete(sn, e)==1?true:false;
-	}
-	
-	public boolean addEducation(Education e){
-		String sn=getIbatisMapperNamespace() + ".addEducation";
-		return getSqlSessionTemplate().insert(sn, e)==1?true:false;
-	}
-	
-	public void deleteEducations(Long resume_id){
-		String sm=getIbatisMapperNamespace()+".deleteEducations";
-		getSqlSessionTemplate().delete(sm, resume_id);
-	}
+	public void deleteEducations(Long resume_id);
 }

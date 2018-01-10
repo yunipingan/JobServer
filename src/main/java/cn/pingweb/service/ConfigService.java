@@ -21,6 +21,6 @@ public class ConfigService {
 	}
 	
 	public boolean updateConfig(Config c){
-		return cd.updateConfig(c);
+		return cd.updateConfig(c) == 1 ? true : false;
 	}
 }

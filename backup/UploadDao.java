@@ -1,11 +1,11 @@
-package cn.pingweb.dao;
+package cn.pingweb.backup;
 
 import cn.pingweb.model.Student;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class UploadDao extends BaseDao<Student>{
+public class UploadDao extends BaseDao<Student> {
 
 	@Override
 	public Class<Student> getEntityClass() {

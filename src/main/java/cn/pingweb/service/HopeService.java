@@ -17,11 +17,11 @@ public class HopeService {
 	}
 	
 	public boolean updateHope(Hope h){
-		return hd.updateHope(h);
+		return hd.updateHope(h) == 1 ? true : false;
 	}
 	
 	public boolean newHope(Hope h){
-		return hd.newHope(h);
+		return hd.newHope(h) == 1 ? true : false;
 	}
 	
 	public void deleteHope(Long resume_id){

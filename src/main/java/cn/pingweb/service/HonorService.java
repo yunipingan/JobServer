@@ -18,15 +18,15 @@ public class HonorService {
 	}
 	
 	public boolean updateHonor(Honor e){
-		return hd.updateHonor(e);
+		return hd.updateHonor(e) == 1 ? true : false;
 	}
 	
 	public boolean deleteHonor(Honor e){
-		return hd.deleteHonor(e);
+		return hd.deleteHonor(e) == 1 ? true : false;
 	}
 	
 	public boolean addHonor(Honor e){
-		return hd.addHonor(e);
+		return hd.addHonor(e) == 1 ? true : false;
 	}
 	
 	public void deleteHonors(Long resume_id){

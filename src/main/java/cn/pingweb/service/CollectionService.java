@@ -18,11 +18,11 @@ public class CollectionService {
 	}
 	
 	public boolean deleteCollection(Collection c){
-		return cd.deleteCollection(c);
+		return cd.deleteCollection(c) == 1 ? true : false;
 	}
 	
 	public boolean addCollection(Collection c){
-		return cd.addCollection(c);
+		return cd.addCollection(c) == 1 ? true : false;
 	}
 	
 	public int getCollectionLength(Collection c){
@@ -35,9 +35,9 @@ public class CollectionService {
 	
 	public boolean toggleStar(Collection c,boolean star){
 		if(star){
-			return cd.addCollection(c);
+			return cd.addCollection(c) == 1 ? true : false;
 		}else{
-			return cd.unStar(c);
+			return cd.unStar(c) == 1 ? true : false;
 		}
 	}
 }

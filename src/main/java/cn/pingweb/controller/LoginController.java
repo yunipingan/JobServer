@@ -37,8 +37,8 @@ public class LoginController {
 	@RequestMapping("/onLogin")
 	public Session onLogin(String code,int identity,HttpServletRequest req){
 		StringBuffer sb = new StringBuffer();
-		sb.append("appid=").append("wx399489ffda5376de");
-		sb.append("&secret=").append("e2519ec7d94ba9913da5a79d49b48025");
+		sb.append("appid=").append("wx9bd1e6712120a747");
+		sb.append("&secret=").append("***");
 		sb.append("&js_code=").append(code);
 		sb.append("&grant_type=").append("authorization_code");
 		String res = HttpRequest.sendGet("https://api.weixin.qq.com/sns/jscode2session", sb.toString());

@@ -1,6 +1,8 @@
 package cn.pingweb.util;
 
 import org.json.JSONException;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
@@ -8,7 +10,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@ServerEndpoint(value = "/ws")
+@Component
+@ServerEndpoint(value = "/wx")
 public class WebSocket {
 
     private static Map<String,Session> sessions = new HashMap<String,Session>();

@@ -26,14 +26,14 @@ public class JobInvicationService {
 	}
 	
 	public boolean setResult(JobInvication ji){
-		return jid.setResult(ji);
+		return jid.setResult(ji) == 1 ? true : false;
 	}
 	
 	public boolean setSeekerRead(Long id){
-		return jid.setSeekerRead(id);
+		return jid.setSeekerRead(id) == 1 ? true : false;
 	}
 	
 	public boolean job_invicate(JobInvication ji){
-		return jid.job_invicate(ji);
+		return jid.job_invicate(ji) == 1 ? true : false;
 	}
 }

@@ -7,47 +7,16 @@ import java.util.List;
 
 
 @Repository
-public class StudentDao extends BaseDao<Student>{
+public interface StudentDao{
 
-	/**
-	 * 获取所有学生信息
-	 * 
-	 * @author Cloud Lau
-	 * @return
-	 */
-	public List<Student> list(){
-		String statementName = getIbatisMapperNamespace() + ".list";
-		return getSqlSessionTemplate().selectList(statementName, null);
-	}
-
-	@Override
-	public Class<Student> getEntityClass() {
-		// TODO Auto-generated method stub
-		return Student.class;
-	}
+	public List<Student> list();
 	
-	public void insert(Student stu){
-		String statementName = getIbatisMapperNamespace() + ".insert";
-		getSqlSessionTemplate().insert(statementName, stu);
-	}
+	public void insert(Student stu);
 	
-	public void update(Student stu){
-		String statementName = getIbatisMapperNamespace() + ".update";
-		getSqlSessionTemplate().update(statementName, stu);
-	}
+	public void update(Student stu);
 	
-	public boolean selectById(Student stu){
-		String statementName = getIbatisMapperNamespace() + ".selectById";
-		if(getSqlSessionTemplate().selectList(statementName, stu).isEmpty()){
-			return true;
-		}else{
-			return false;
-		}
-	}
+	public List<Student> selectById(Student stu);
 	
-	public void delete(Student stu){
-		String statementName = getIbatisMapperNamespace() + ".delete";
-		getSqlSessionTemplate().delete(statementName, stu);
-	}
+	public void delete(Student stu);
 
 }

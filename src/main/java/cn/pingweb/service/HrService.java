@@ -12,8 +12,8 @@ public class HrService {
 	@Resource
 	private  HrDao hd;
 	
-	public void newHr(Hr sk){
-		hd.newHr(sk);
+	public boolean newHr(Hr sk){
+		return hd.newHr(sk) == 1 ? true : false;
 	}
 	
 	public Hr getUserInfo(Hr s){
@@ -21,11 +21,11 @@ public class HrService {
 	}
 	
 	public boolean updateHr(Hr s){
-		return hd.updateHr(s);
+		return hd.updateHr(s) == 1 ? true : false;
 	}
 	
 	public boolean updateAvatar(Hr s){
-		return hd.updateAvatar(s);
+		return hd.updateAvatar(s) == 1 ? true : false;
 	}
 	
 }

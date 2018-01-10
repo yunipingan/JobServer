@@ -22,15 +22,15 @@ public class ResumeService {
 	}
 	
 	public boolean updateResume(Resume r){
-		return rd.updateResumeName(r);
+		return rd.updateResumeName(r) == 1 ? true : false;
 	}
 	
 	public boolean addNewResume(Resume r){
-		return rd.addNewResume(r);
+		return rd.addNewResume(r) == 1 ? true : false;
 	}
 	
 	public boolean deleteResume(Resume r){
-		return rd.deleteResume(r);
+		return rd.deleteResume(r) == 1 ? true : false;
 	}
 	
 	public Resume getNewestResumeName(Resume r){

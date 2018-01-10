@@ -18,6 +18,6 @@ public class CommentService {
 	}
 	
 	public boolean newComment(Comment c){
-		return cd.newComment(c);
+		return cd.newComment(c) == 1 ? true : false;
 	}
 }
