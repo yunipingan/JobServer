@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.pingweb.model.Intership">
+<mapper namespace="cn.pingweb.dao.IntershipDao">
 	<resultMap id="Intership" type="cn.pingweb.model.Intership">
     	<id property="id" column="id" jdbcType="BIGINT" />
 		<result property="resume_id" column="resume_id" jdbcType="BIGINT" />		

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HrDao{
 	
-//	public void newHr(Hr sk){
+//	void newHr(Hr sk){
 //		String sn=getIbatisMapperNamespace() + ".selectFromOpenid";
 //		if(getSqlSessionTemplate().selectOne(sn, sk)==null){
 //			sn=getIbatisMapperNamespace() + ".newHr";
@@ -15,12 +15,12 @@ public interface HrDao{
 //			System.out.println("插入成功");
 //		}
 //	}
-	public int newHr(Hr sk);
+	int newHr(Hr sk);
 	
-	public Hr getUserInfo(Hr s);
+	Hr getUserInfo(Hr s);
 	
-	public int updateHr(Hr s);
+	int updateHr(Hr s);
 
-	public int updateAvatar(Hr s);
+	int updateAvatar(Hr s);
 
 }

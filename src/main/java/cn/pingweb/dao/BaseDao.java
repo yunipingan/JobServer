@@ -12,7 +12,7 @@ import javax.annotation.Resource;
  * @date 2016年3月5日
  * @description
  */
-public abstract class BaseDao<M> {
+abstract class BaseDao<M> {
 	
 	@Resource
 	private SqlSessionFactory sqlSessionFactory;
@@ -21,22 +21,22 @@ public abstract class BaseDao<M> {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public SqlSessionFactory getSqlSessionFactory() {
+	SqlSessionFactory getSqlSessionFactory() {
 		return this.sqlSessionFactory;
 	}
 
-	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+	void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		this.sqlSessionFactory = sqlSessionFactory;
 		this.sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
 	}
 	
-	public abstract Class<M> getEntityClass();
+	abstract Class<M> getEntityClass();
 	
-	public String getIbatisMapperNamespace() {
-		return getEntityClass().getName();
+	String getIbatisMapperNamespace() {
+		return this.getClass().getName();
 	}
 	
-	public SqlSessionTemplate getSqlSessionTemplate() {
+	SqlSessionTemplate getSqlSessionTemplate() {
 		return this.sqlSessionTemplate;
 	}
 }

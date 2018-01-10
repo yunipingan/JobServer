@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HopeDao{
 	
-	public Hope getHope(Hope h);
+	Hope getHope(Hope h);
 	
-	public int updateHope(Hope h);
+	int updateHope(Hope h);
 
-	public int newHope(Hope h);
+	int newHope(Hope h);
 	
-	public void deleteHope(Long resume_id);
+	void deleteHope(Long resume_id);
 }

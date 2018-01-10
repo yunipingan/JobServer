@@ -9,19 +9,19 @@ import java.util.List;
 @Repository
 public interface ResumeDao{
 	
-	public List<Resume> getResumesName(Resume r);
+	List<Resume> getResumesName(Resume r);
 	
-	public Resume getResumeById(Resume r);
+	Resume getResumeById(Resume r);
 	
-	public int updateResumeName(Resume r);
+	int updateResumeName(Resume r);
 
-	public int addNewResume(Resume r);
+	int addNewResume(Resume r);
 
-	public int deleteResume(Resume r);
+	int deleteResume(Resume r);
 	
-	public Resume getNewestResumeName(Resume r);
+	Resume getNewestResumeName(Resume r);
 	
-	public boolean updateSelfAssessment(Resume r);
+	boolean updateSelfAssessment(Resume r);
 
-	public boolean updateHope(Resume r);
+	boolean updateHope(Resume r);
 }

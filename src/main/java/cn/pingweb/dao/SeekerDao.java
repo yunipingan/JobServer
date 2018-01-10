@@ -7,50 +7,19 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 
 @Repository
-public class SeekerDao extends BaseDao<Seeker>{
+public interface SeekerDao{
+
+	Seeker selectFromOpenid(Seeker s);
 	
-	@Resource
-	private ConfigDao cd;
+	int newSeeker(Seeker s);
 	
-	@Override
-	public Class<Seeker> getEntityClass() {
-		// TODO Auto-generated method stub
-		return Seeker.class;
-	}
+	Seeker getUserInfo(Seeker s);
 	
-	public void newSeeker(Seeker s){
-		String sn=getIbatisMapperNamespace() + ".selectFromOpenid";
-		if(getSqlSessionTemplate().selectOne(sn, s)==null){
-			sn=getIbatisMapperNamespace() + ".newSeeker";
-			getSqlSessionTemplate().insert(sn, s);
-			Config c=new Config();
-			c.setSeeker_id(s.getOpenid());
-			cd.addConfig(c);
-			System.out.println("插入成功");
-		}
-	}
+	int updateSeeker(Seeker s);
 	
-	public Seeker getUserInfo(Seeker s){
-		String sn=getIbatisMapperNamespace() + ".selectFromOpenid";
-		return getSqlSessionTemplate().selectOne(sn, s);
-	}
+	int updateAvatar(Seeker s);
 	
-	public boolean updateSeeker(Seeker s){
-		String sn=getIbatisMapperNamespace() + ".updateSeeker";
-		return getSqlSessionTemplate().update(sn, s)==1?true : false;
-	}
-	
-	public boolean updateAvatar(Seeker s){
-		String sn=getIbatisMapperNamespace() + ".updateAvatar";
-		return getSqlSessionTemplate().update(sn, s)==1?true : false;
-	}
-	
-	public boolean updateSeekerName(Seeker s){
-		String sn=getIbatisMapperNamespace() + ".updateSeekerName";
-		return getSqlSessionTemplate().update(sn, s)==1?true : false;
-	}
-	public boolean updateHope_job(Seeker s){
-		String sn=getIbatisMapperNamespace() + ".updateHope_job";
-		return getSqlSessionTemplate().update(sn, s)==1?true : false;
-	}
+	int updateSeekerName(Seeker s);
+
+	int updateHope_job(Seeker s);
 }

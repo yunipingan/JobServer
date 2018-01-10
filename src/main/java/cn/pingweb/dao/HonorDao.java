@@ -9,13 +9,13 @@ import java.util.List;
 @Repository
 public interface HonorDao{
 	
-	public List<Honor> getHonors(Honor e);
+	List<Honor> getHonors(Honor e);
 	
-	public int updateHonor(Honor e);
+	int updateHonor(Honor e);
 
-	public int deleteHonor(Honor e);
+	int deleteHonor(Honor e);
 
-	public int addHonor(Honor e);
+	int addHonor(Honor e);
 	
-	public void deleteHonors(Long resume_id);
+	void deleteHonors(Long resume_id);
 }

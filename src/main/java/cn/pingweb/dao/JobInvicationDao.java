@@ -9,15 +9,15 @@ import java.util.List;
 @Repository
 public interface JobInvicationDao{
 	
-	public int getUnReadLength(String seeker_id);
+	int getUnReadLength(String seeker_id);
 	
-	public List<JobInvication> getUnRead(JobInvication ji);
+	List<JobInvication> getUnRead(JobInvication ji);
 	
-	public JobInvication getInvication(Long id);
+	JobInvication getInvication(Long id);
 	
-	public int setResult(JobInvication ji);
+	int setResult(JobInvication ji);
 
-	public int setSeekerRead(Long id);
+	int setSeekerRead(Long id);
 
-	public int job_invicate(JobInvication ji);
+	int job_invicate(JobInvication ji);
 }

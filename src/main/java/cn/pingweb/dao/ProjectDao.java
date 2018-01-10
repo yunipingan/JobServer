@@ -9,13 +9,13 @@ import java.util.List;
 @Repository
 public interface ProjectDao{
 	
-	public List<Project> getProjects(Project e);
+	List<Project> getProjects(Project e);
 	
-	public int updateProject(Project e);
+	int updateProject(Project e);
 
-	public int deleteProject(Project e);
+	int deleteProject(Project e);
 
-	public int addProject(Project e);
+	int addProject(Project e);
 	
-	public void deleteProjects(Long resume_id);
+	void deleteProjects(Long resume_id);
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.pingweb.model.ResumeDeliverStatus">
+<mapper namespace="cn.pingweb.dao.ResumeDeliverStatusDao">
 	<resultMap id="ResumeDeliverStatus" type="cn.pingweb.model.ResumeDeliverStatus">
     	<id property="id" column="rds_id" jdbcType="BIGINT" />
 		<result property="job_id" column="job_id" jdbcType="BIGINT" />	

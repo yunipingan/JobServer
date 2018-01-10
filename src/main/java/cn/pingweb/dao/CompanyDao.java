@@ -9,11 +9,11 @@ import java.util.List;
 @Repository
 public interface CompanyDao{
 
-	public List<Company> getCompanys(Company c);
+	List<Company> getCompanys(Company c);
 	
-	public int updateCompany(Company e);
+	int updateCompany(Company e);
 	
-	public int deleteCompany(Company c);
+	int deleteCompany(Company c);
 
-	public int addCompany(Company c);
+	int addCompany(Company c);
 }

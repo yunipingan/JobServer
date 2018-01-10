@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface CommentDao{
 	
-	public List<Comment> getComment(Long job_id,int start,int limit);
+	List<Comment> getComment(Long job_id,int start,int limit);
 	
-	public int newComment(Comment c);
+	int newComment(Comment c);
 }

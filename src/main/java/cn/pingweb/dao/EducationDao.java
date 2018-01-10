@@ -9,13 +9,13 @@ import java.util.List;
 @Repository
 public interface EducationDao{
 
-	public List<Education> getEducations(Education e);
+	List<Education> getEducations(Education e);
 	
-	public int updateEducation(Education e);
+	int updateEducation(Education e);
 
-	public int deleteEducation(Education e);
+	int deleteEducation(Education e);
 	
-	public int addEducation(Education e);
+	int addEducation(Education e);
 	
-	public void deleteEducations(Long resume_id);
+	void deleteEducations(Long resume_id);
 }

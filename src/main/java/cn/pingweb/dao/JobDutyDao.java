@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface JobDutyDao {
-	public List<JobDuty> getJobDuty(Long job_id);
+	List<JobDuty> getJobDuty(Long job_id);
 }

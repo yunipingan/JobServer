@@ -9,14 +9,14 @@ import java.util.List;
 @Repository
 public interface StudentDao{
 
-	public List<Student> list();
+	List<Student> list();
 	
-	public void insert(Student stu);
+	void insert(Student stu);
 	
-	public void update(Student stu);
+	void update(Student stu);
 	
-	public List<Student> selectById(Student stu);
+	List<Student> selectById(Student stu);
 	
-	public void delete(Student stu);
+	void delete(Student stu);
 
 }

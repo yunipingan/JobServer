@@ -6,10 +6,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ConfigDao {
 
+	void addConfig(Config c);
 	
-	public void addConfig(Config c);
+	int updateConfig(Config c);
 	
-	public int updateConfig(Config c);
-	
-	public Config getConfig(Config c);
+	Config getConfig(Config c);
 }

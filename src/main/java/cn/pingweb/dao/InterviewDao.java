@@ -9,15 +9,15 @@ import java.util.List;
 @Repository
 public interface InterviewDao{
 	
-	public int getUnReadLength(String seeker_id);
+	int getUnReadLength(String seeker_id);
 	
-	public List<Interview> getUnRead(Interview i);
+	List<Interview> getUnRead(Interview i);
 	
-	public Interview getInterviewById(Long id);
+	Interview getInterviewById(Long id);
 	
-	public int setRead(Long id);
+	int setRead(Long id);
 
-	public int comment(Long id);
+	int comment(Long id);
 
-	public int insertNewInterview(Interview i);
+	int insertNewInterview(Interview i);
 }
