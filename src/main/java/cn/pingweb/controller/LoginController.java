@@ -7,6 +7,7 @@ import net.sf.json.JSONObject;
 import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -20,10 +21,9 @@ public class LoginController {
 	@Resource
 	private HrService hs;
 
-	@ResponseBody
-	@RequestMapping("/")
-	public String index(){
-		return "user";
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(HttpServletRequest req){
+		return "index";
 	}
 	
 	
@@ -50,6 +50,7 @@ public class LoginController {
 		s.setSessionId(req.getSession().getId());
 		s.setThirdSessionKey(RandomStringUtils.randomAlphanumeric(128));
 		System.out.println(s.getThirdSessionKey());
+		req.getSession().setAttribute("login", true);
 		req.getSession().setAttribute(s.getThirdSessionKey(),jsonobject.get("openid").toString());
 		req.getSession().setMaxInactiveInterval(60*60*24*30);
 		//检测用户是否已经存储到数据库中

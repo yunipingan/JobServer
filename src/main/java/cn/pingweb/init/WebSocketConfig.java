@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
+ * springboot的测试用例无法使用此类
  * @author zhuyuping
  * @date 2018/1/10.
  */
