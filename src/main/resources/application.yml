@@ -20,27 +20,27 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
   resources:
-    static-locations: classpath:/webapp/templates/
+    static-locations: classpath:/pcweb/
   freemarker:
     charset: UTF-8
-    template-loader-path: classpath:/webapp/templates/
-    suffix: .ftl
+    template-loader-path: classpath:/pcweb/templates/
+    suffix: .html
 
 
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
-management:
-  ssl:
-    key-store: classpath:/keystore.p12
-    key-store-type: PKCS12
-    key-alias: tomcat
-    protocol: TLS
-    key-password: 123456
-    key-store-password: 123456
-    client-auth: want
+#management:
+#  ssl:
+#    key-store: classpath:/keystore.p12
+#    key-store-type: PKCS12
+#    key-alias: tomcat
+#    protocol: TLS
+#    key-password: 123456
+#    key-store-password: 123456
+#    client-auth: want
 
 server:
-  port: 443
+  port: 8080
   max-http-header-size: 10000
   connection-timeout: 20000
   tomcat:
